@@ -8,6 +8,7 @@ import { AuthModule } from 'src/auth/auth.module';
 @Module({
   imports:[ AuthModule,TypeOrmModule.forFeature([Feedback]) ],
   controllers: [FeedbackController],
-  providers: [FeedbackService]
+  providers: [FeedbackService],
+  exports:[FeedbackService]
 })
 export class FeedbackModule {}

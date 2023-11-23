@@ -8,7 +8,7 @@ import { AccessTokenGuard } from 'src/common/guards/accessToken.guard';
 export class FeedbackController {
   constructor(private readonly feedbackService: FeedbackService) {}
 
-  @UseGuards(AccessTokenGuard)
+ // @UseGuards(AccessTokenGuard)
   @Post()
   create(@Body() createFeedbackDto: CreateFeedbackDto) {
     return this.feedbackService.create(createFeedbackDto);
