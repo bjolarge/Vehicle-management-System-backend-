@@ -19,7 +19,6 @@ export class FeedbackService {
   findAll() {
     return this.feedbackRepository.find();
   }
-
   findOne(id) {
     const feedback =  this.feedbackRepository.findOne({where: {id}});
     if(!feedback){

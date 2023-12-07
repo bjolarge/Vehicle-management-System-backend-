@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, NotFoundException } from '@nestjs/common';
 import { FeedbackService } from './feedback.service';
 import { CreateFeedbackDto } from './dto/create-feedback.dto';
 import { UpdateFeedbackDto } from './dto/update-feedback.dto';
@@ -21,7 +21,12 @@ export class FeedbackController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.feedbackService.findOne(+id);
+    const feedback = this.feedbackService.findOne(+id);
+    if(!feedback){
+      throw new NotFoundException(`Feedback with the given id #${id} not found`);
+    }
+    return feedback;
+    // return this.feedbackService.findOne(+id);
   }
 
   @Patch(':id')
